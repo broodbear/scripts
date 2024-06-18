@@ -1,1 +1,3 @@
-scan
+*.gnmap
+*.nmap
+*.xml

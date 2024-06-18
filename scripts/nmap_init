@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+function usage() {
+    cat <<EOF
+Usage: $0 <ip> <folder>
+EOF
+}
+
+function scan() {
+    mkdir -p $2
+    sudo nmap $1 -p- -sV -Pn -n --disable-arp-ping --stats-every=5s -oA $2/$1_init
+}
+
+if [[ -z $1 || -z $2 ]]; then
+    usage
+    exit 1
+fi
+
+scan $1 $2
